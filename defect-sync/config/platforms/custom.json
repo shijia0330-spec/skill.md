@@ -1,0 +1,25 @@
+{
+  "platform": "custom",
+  "auth_type": "bearer",
+  "auth_header": "X-API-Key",
+  "response_id_field": "id",
+  "response_url_field": "url",
+  "field_map": {
+    "title": "title",
+    "description": "steps",
+    "severity": "severity",
+    "priority": "priority",
+    "type": "defect_type",
+    "fingerprint": "fingerprint",
+    "external_id": "bug_id",
+    "testcase": "nodeid",
+    "reporter": "discoverer",
+    "failure_category": "failure_category",
+    "failure_confidence": "failure_confidence"
+  },
+  "defaults": {
+    "source": "skills-v3-automation",
+    "status": "open"
+  },
+  "note": "webhook_url 通过环境变量 DEFECT_WEBHOOK_URL 配置"
+}

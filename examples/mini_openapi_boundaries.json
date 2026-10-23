@@ -1,0 +1,71 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "Seckill Finance Auth (boundary demo)", "version": "1" },
+  "servers": [{ "url": "http://your-server:5001" }],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": { "type": "http", "scheme": "bearer" }
+    }
+  },
+  "paths": {
+    "/api/auth/login": {
+      "post": {
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["username", "password"],
+                "properties": {
+                  "username": { "type": "string", "minLength": 1, "maxLength": 50 },
+                  "password": { "type": "string", "minLength": 6, "maxLength": 128 }
+                }
+              },
+              "example": { "username": "admin", "password": "admin123" }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "JWT token" },
+          "401": { "description": "invalid credentials" },
+          "422": { "description": "validation error" }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["username", "password"],
+                "properties": {
+                  "username": { "type": "string", "minLength": 1, "maxLength": 50 },
+                  "password": { "type": "string", "minLength": 6, "maxLength": 128 },
+                  "email": { "type": "string", "maxLength": 100, "format": "email" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "created" },
+          "400": { "description": "duplicate username" },
+          "422": { "description": "validation error" }
+        }
+      }
+    },
+    "/api/auth/profile": {
+      "get": {
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "profile" },
+          "401": { "description": "unauthorized" }
+        }
+      }
+    }
+  }
+}

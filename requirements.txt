@@ -1,0 +1,28 @@
+# 测试技能包 V3.0 — 依赖清单
+# 按需安装，不是所有模块都需要全部依赖
+
+# ── 核心依赖（生成脚本必需） ──
+PyYAML>=6.0          # YAML frontmatter 解析
+requests>=2.28       # API测试 HTTP 客户端
+
+# ── API测试 ──
+pytest>=7.0          # 测试框架
+allure-pytest>=2.13  # Allure 报告（可选）
+
+# ── UI 测试 ──
+pytest-playwright>=0.4  # Playwright pytest 集成
+allure-playwright>=2.13 # Playwright Allure 报告（可选）
+
+# ── 造数脚本 ──
+pymysql>=1.1         # MySQL 连接（data_factory）
+
+# ── 性能测试 ──
+locust>=2.20         # 性能压测框架
+
+# ── Appium 移动端 ──
+Appium-Python-Client>=3.0  # Appium 客户端
+selenium>=4.15            # Selenium WebDriver
+
+# ── RAG 知识增强（可选） ──
+# chromadb>=0.4        # 向量数据库（RAG 检索）
+# sentence-transformers>=2.2  # 文本嵌入模型

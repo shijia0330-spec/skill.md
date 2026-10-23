@@ -1,0 +1,412 @@
+# ---------------------------------------------------------------------------
+# Orchestration routing bundle — skills 专业版 V3.0
+# Consumer: intent-router SKILL + optional IDE snippet; first rule wins.
+# Fields: tag / phrases / skill_paths / default_skill
+# ---------------------------------------------------------------------------
+
+revision: 12
+ordering: top_down_short_circuit
+
+rules:
+
+  - tag: testplan_pipeline
+    phrases:
+      - 测试方案
+      - 测试计划
+      - 方案与计划
+      - 测试方案与计划
+      - 从 PRD 出方案
+      - 技术文档写测试方案
+      - 出测试计划
+      - testscheme
+      - testplan
+      - 测试大纲
+      - 测试总体方案
+      - 测试策略
+      - 测试排期
+    skill_paths:
+      - testplan-skills/分析
+      - testplan-skills/方案
+      - testplan-skills/计划
+    default_skill: testplan-skills/方案
+
+  - tag: testplan_review
+    phrases:
+      - 方案评审
+      - 计划评审
+      - 测试方案评审
+      - 测试计划评审
+      - 方案计划评审
+    skill_paths:
+      - testplan-skills/评审
+    default_skill: testplan-skills/评审
+
+  - tag: test_plan_quick
+    phrases:
+      - 快速出方案
+      - 单页测试计划
+      - 简化测试方案
+    skill_paths:
+      - test-plan
+    default_skill: test-plan
+
+  - tag: requirement_modeling
+    phrases:
+      - 需求建模
+      - 测什么不测什么
+      - 测试范围拆解
+      - 需求拆解
+      - In-Scope
+      - Out-of-Scope
+      - 范围锚定
+    skill_paths:
+      - requirement-modeling
+    default_skill: requirement-modeling
+
+  - tag: load_report
+    phrases:
+      - 压测截图分析
+      - 性能报告生成
+      - 性能分析报告
+      - 压测结果分析
+      - 聚合报告分析
+      - JMeter 截图
+      - Gatling 报告
+      - HTML 性能报告
+    skill_paths:
+      - load-testing
+    default_skill: load-testing/报告
+
+  - tag: load_testing
+    phrases:
+      - 压测
+      - 性能测试
+      - k6
+      - JMeter
+      - jmeter
+      - 并发压测
+      - 性能专项
+      - 压测脚本
+      - 压测报告
+      - load-testing
+      - generate压测
+      - jmeter_test
+      - 秒杀压测
+    skill_paths:
+      - load-testing/执行
+      - load-testing/报告
+      - load-testing
+    default_skill: load-testing/执行
+
+  - tag: data_factory_codegen
+    phrases:
+      - 数据工厂
+      - data_factory
+      - 声明式造数
+      - MySQL造数
+      - 造数导出CSV
+      - users.csv
+      - 铺底脚本
+      - pytest铺底
+      - setup铺底
+      - 种子数据
+      - 工厂数据
+      - 造测试数据
+      - 测试数据
+    skill_paths:
+      - data-factory/执行
+      - data-factory
+    default_skill: data-factory/执行
+
+  - tag: special_testing
+    phrases:
+      - Locust
+      - Locust压测
+      - perf_test.md
+      - 专项测试
+      - special-testing
+    skill_paths:
+      - special-testing
+      - load-testing/执行
+    default_skill: special-testing
+
+  - tag: testcase_pipeline
+    phrases:
+      - 测试点
+      - 用例生成
+      - 从需求写用例
+      - 案例产出
+      - 测试设计交付
+      - 场景覆盖表
+      - 需求追溯到用例
+      - 业务场景拆解
+      - 登录流程案例
+      - 下单支付案例
+      - 写测试用例
+      - 生成测试用例
+      - 测试用例
+      - 用例设计
+      - XMind 用例
+      - 思维导图测试用例
+      - PRD 转 XMind
+    skill_paths:
+      - testcase-skills/规划
+      - testcase-skills/分析
+      - testcase-skills/生成
+    default_skill: testcase-skills/生成
+
+  - tag: testcase_planning
+    phrases:
+      - 迭代范围
+      - 质量门禁策略
+      - 里程碑与里程碑风险
+      - 测试里程碑
+      - 发布准入
+    skill_paths:
+      - testcase-skills/规划
+    default_skill: testcase-skills/规划
+
+  - tag: testcase_review
+    phrases:
+      - 走查用例
+      - 测试设计评审
+      - 用例抽检
+      - 覆盖度复核
+      - 用例评审
+      - 评审用例
+      - 用例检查
+    skill_paths:
+      - testcase-skills/评审
+    default_skill: testcase-skills/评审
+
+  - tag: test_data_by_case
+    phrases:
+      - 用例数据设计
+      - 评审后造数
+      - 数据准备脚本
+      - 每条用例需要什么数据
+      - data_setup
+      - 数据筹备
+      - 铺底数据脚本
+    skill_paths:
+      - testcase-data-generator
+    default_skill: testcase-data-generator
+
+  - tag: api_openapi_smoke
+    phrases:
+      - Swagger 直出
+      - OpenAPI 冒烟
+      - 冒烟导入
+      - import-openapi
+      - 快速冒烟
+      - 连通性导入
+      - smoke-only
+    skill_paths:
+      - api-skills/执行/references/openapi_smoke_mode.md
+      - api-skills
+    default_skill: api-skills/执行/references/openapi_smoke_mode.md
+
+  - tag: api_automation
+    phrases:
+      - HTTP 契约
+      - REST 验证
+      - 端点回归
+      - 契约驱动
+      - OpenAPI 导入
+      - Swagger 导入
+      - OpenAPI 自动化
+      - Swagger 转 pytest
+      - 接口自动化用例
+      - openapi_to_cases
+      - 接口自动化
+      - API 测试
+      - 接口测试
+      - 接口回归
+    skill_paths:
+      - api-skills/执行/references/openapi_pipeline.md
+      - api-skills
+    default_skill: api-skills/执行/references/openapi_pipeline.md
+
+  - tag: api_heal
+    phrases:
+      - 流水线接口步骤失败
+      - 契约脚本回归红灯
+      - 接口步骤自愈
+    skill_paths:
+      - api-skills/自我修复
+    default_skill: api-skills/自我修复
+
+  - tag: ui_nl_one_shot
+    phrases:
+      - 一句话操作页面
+      - 自然语言UI
+      - 自然语言 UI
+      - 在系统上执行
+      - 给我新增
+      - 帮我在页面
+      - 口语驱动浏览器
+      - 说一句话测页面
+      - NL UI
+    skill_paths:
+      - UI-skills/nl-one-shot
+    default_skill: UI-skills/nl-one-shot
+
+  - tag: ui_smoke_direct
+    phrases:
+      - UI 冒烟
+      - 单页直出
+      - ui_smoke_one_page
+      - 快速 UI 冒烟
+      - 声明式 UI 直出
+    skill_paths:
+      - UI-skills/执行/references/ui_smoke_mode.md
+      - UI-skills
+    default_skill: UI-skills/执行/references/ui_smoke_mode.md
+
+  - tag: ui_md_conversion
+    phrases:
+      - Markdown 转 UI 自动化
+      - 功能用例筛 UI
+      - 用例筛选自动化
+      - md_ui_filter
+      - 用例转化
+      - 测试用例转 Playwright
+      - 批量筛可执行用例
+      - 功能用例转自动化
+      - UI 候选清单
+      - 三件套
+      - 用例和截图
+      - input bundle
+      - ui_cases_by_image
+      - UI 精简
+    skill_paths:
+      - testcase-skills/UI精简
+      - UI-skills/转化
+      - UI-skills/执行
+    default_skill: UI-skills/转化
+
+  - tag: ui_heal
+    phrases:
+      - E2E 报错定位
+      - 页面自动化回归失败
+    skill_paths:
+      - UI-skills/自我修复
+    default_skill: UI-skills/自我修复
+
+  - tag: ui_automation
+    phrases:
+      - 浏览器端到端
+      - E2E 自动化
+      - Playwright 流水线
+      - 页面交互验证
+      - 该页面如何验证
+      - Web 测试
+      - Web 端测试
+      - Web 端自动化
+      - 页面自动化测试
+      - Web 自动化
+      - 前端测试
+      - UI 测试
+      - 界面测试
+      - UI 自动化
+      - page_to_ui_cases
+      - testcase_to_ui_spec
+    skill_paths:
+      - UI-skills/执行/references/ui_pipeline.md
+      - UI-skills
+    default_skill: UI-skills/执行/references/ui_pipeline.md
+
+  - tag: mobile_heal
+    phrases:
+      - Appium 报错
+      - 手机脚本失败
+      - 移动端自动化挂了
+    skill_paths:
+      - mobile-skills/自我修复
+    default_skill: mobile-skills/自我修复
+
+  - tag: mobile_report
+    phrases:
+      - Appium 报告
+      - 移动端测试报告
+      - appium 报告
+      - 手机测试报告
+    skill_paths:
+      - mobile-skills/报告
+    default_skill: mobile-skills/报告
+
+  - tag: mobile_automation
+    phrases:
+      - 手机端自动化
+      - 移动端自动化
+      - App 自动化
+      - appium_pytest
+      - 声明式 Appium
+      - Android 自动化
+      - iOS 自动化
+      - 真机自动化
+      - 模拟器回归
+      - Appium
+      - 小程序自动化
+    skill_paths:
+      - mobile-skills
+    default_skill: mobile-skills/执行
+
+  - tag: defect_sync
+    phrases:
+      - 推缺陷到禅道
+      - 同步 bug 到云效
+      - 缺陷建单
+      - 缺陷同步
+      - 推送缺陷
+      - 提交 bug 到工单
+      - 对接禅道
+      - 对接云效
+    skill_paths:
+      - defect-sync
+    default_skill: defect-sync
+
+  - tag: defect_intake
+    phrases:
+      - 缺陷单登记
+      - issue 入库
+      - 质量偏差记录
+      - 缺陷度量
+      - 缺陷复盘材料
+      - 记缺陷
+      - 报 bug
+      - 提交缺陷
+      - 缺陷报告
+      - 缺陷
+      - bug
+      - 问题
+    skill_paths:
+      - bug-reporter
+    default_skill: bug-reporter
+
+  - tag: progress_status
+    phrases:
+      - 迭代燃尽
+      - 队列剩余
+      - 当前工作包
+      - 我在做什么
+      - 还剩多少活
+      - 进度汇报
+      - 进度报告
+      - 测试进度
+      - 进展如何
+    skill_paths:
+      - progress-reporter
+    default_skill: progress-reporter
+
+  - tag: qa_architect_analysis
+    phrases:
+      - 质量架构
+      - 状态机梳理
+      - 图片需求分析
+      - 深度需求分析
+      - QA 架构师
+      - 需求截图分析
+    skill_paths:
+      - requirement-modeling
+    default_skill: requirement-modeling

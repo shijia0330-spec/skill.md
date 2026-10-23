@@ -1,0 +1,53 @@
+---
+description: "测试技能包总编排 - 指导 AI 编辑器如何引用 skills 专业版 V3.0 中的技能文档"
+globs: ["**/*.md", "**/*.py", "**/*.yaml", "**/*.sh"]
+alwaysApply: true
+---
+
+# 测试技能包 - AI 编辑器使用指南
+
+## 项目定位
+
+这是一个测试技能包，包含：
+1. **技能文档**（SKILL.md）：给 AI 看的测试操作手册
+2. **脚本生成器**（codegen/）：本地模板引擎，把 spec 文件转成 pytest 脚本
+3. **内置模板**（templates/）：开箱即用的 spec 示例
+
+## 使用方式
+
+### 方式一：本地生成（不需要 AI）
+
+用户写一个 spec 文件（Markdown + YAML frontmatter），运行：
+```bash
+./generate.sh <spec文件>
+./run_pytest.sh output/<脚本>.py -v   # 失败自动写 output/bugs/ 缺陷草稿
+```
+
+支持的 kind：
+- `api_pytest` → 生成 pytest + requests 脚本
+- `ui_pytest_playwright` → 生成 pytest + playwright 脚本
+
+### 方式二：AI 辅助生成
+
+在 AI 编辑器中 @ 引用对应的 SKILL.md，然后描述需求。
+
+常用引用：
+- `@testcase-skills/规划/SKILL.md` - 测试规划
+- `@testcase-skills/分析/SKILL.md` - 需求分析
+- `@testcase-skills/生成/SKILL.md` - 从 PRD 生成测试点（专业版唯一入口）
+- `@api-exec/SKILL.md` 或 `@api-skills/执行/SKILL.md` - API 全流程（OpenAPI / 自然语言 → pytest）
+- `@ui-exec/SKILL.md` 或 `@UI-skills/执行/SKILL.md` - UI 全流程（URL / NL / 截图 → Playwright）
+- `@bug-reporter/SKILL.md` - 缺陷 Markdown 模板（不自动建 Jira 单）
+
+## 术语规范
+
+- 统一使用"缺陷"而非"Bug"
+- 统一使用"技能"而非"模块"
+- 严重度：Critical / High / Medium / Low
+- 优先级：P0 / P1 / P2 / P3
+
+## 不要做的事
+
+- 不要使用 MidScene.js 或 .spec.ts（本技能包只用 Python）
+- 不要在生成的代码中暴露内部路径
+- 不要在文档中使用 AI 味词汇（本模块、旨在、涵盖、确保、基于、赋能、闭环）

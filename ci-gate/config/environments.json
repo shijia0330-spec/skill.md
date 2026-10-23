@@ -1,0 +1,65 @@
+{
+  "dev": {
+    "name": "开发环境",
+    "performance": {
+      "avg_response_time": {"operator": "<=", "threshold": 500},
+      "p95_response_time": {"operator": "<=", "threshold": 1000},
+      "p99_response_time": {"operator": "<=", "threshold": 2000},
+      "failure_rate": {"operator": "<=", "threshold": 0.05},
+      "error_rate": {"operator": "<=", "threshold": 0.03},
+      "qps": {"operator": ">=", "threshold": 50}
+    },
+    "security": {
+      "critical_vulnerabilities": {"operator": "<=", "threshold": 2},
+      "high_vulnerabilities": {"operator": "<=", "threshold": 5},
+      "medium_vulnerabilities": {"operator": "<=", "threshold": 10}
+    },
+    "quality": {
+      "code_coverage": {"operator": ">=", "threshold": 0.60},
+      "code_smells": {"operator": "<=", "threshold": 20},
+      "test_pass_rate": {"operator": ">=", "threshold": 0.80}
+    }
+  },
+  "staging": {
+    "name": "测试环境",
+    "performance": {
+      "avg_response_time": {"operator": "<=", "threshold": 300},
+      "p95_response_time": {"operator": "<=", "threshold": 800},
+      "p99_response_time": {"operator": "<=", "threshold": 1500},
+      "failure_rate": {"operator": "<=", "threshold": 0.02},
+      "error_rate": {"operator": "<=", "threshold": 0.01},
+      "qps": {"operator": ">=", "threshold": 100}
+    },
+    "security": {
+      "critical_vulnerabilities": {"operator": "<=", "threshold": 0},
+      "high_vulnerabilities": {"operator": "<=", "threshold": 2},
+      "medium_vulnerabilities": {"operator": "<=", "threshold": 5}
+    },
+    "quality": {
+      "code_coverage": {"operator": ">=", "threshold": 0.80},
+      "code_smells": {"operator": "<=", "threshold": 10},
+      "test_pass_rate": {"operator": ">=", "threshold": 0.95}
+    }
+  },
+  "prod": {
+    "name": "生产环境",
+    "performance": {
+      "avg_response_time": {"operator": "<=", "threshold": 200},
+      "p95_response_time": {"operator": "<=", "threshold": 500},
+      "p99_response_time": {"operator": "<=", "threshold": 1000},
+      "failure_rate": {"operator": "<=", "threshold": 0.01},
+      "error_rate": {"operator": "<=", "threshold": 0.005},
+      "qps": {"operator": ">=", "threshold": 500}
+    },
+    "security": {
+      "critical_vulnerabilities": {"operator": "<=", "threshold": 0},
+      "high_vulnerabilities": {"operator": "<=", "threshold": 0},
+      "medium_vulnerabilities": {"operator": "<=", "threshold": 5}
+    },
+    "quality": {
+      "code_coverage": {"operator": ">=", "threshold": 0.90},
+      "code_smells": {"operator": "<=", "threshold": 5},
+      "test_pass_rate": {"operator": ">=", "threshold": 0.98}
+    }
+  }
+}

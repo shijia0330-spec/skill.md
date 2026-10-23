@@ -1,0 +1,14 @@
+# 秒杀财务 Web 前端登录（Playwright 捕获 XHR Bearer Token）
+type: ui_storage_login
+username_env: TEST_USERNAME
+password_env: TEST_PASSWORD
+storage_state: output/.auth/ui_storage.json
+login_path: /login
+home_path: /products
+api_capture_pattern: /api/
+wait_api_pattern: /api/products
+probe_path: /api/health
+notes: |
+  export TEST_BASE_URL=http://your-server:5173
+  python UI-skills/执行/scripts/save_ui_storage_state.py
+  python codegen/fetch_perf_token.py --auth-profile templates/auth_profiles/seckill_web.yaml

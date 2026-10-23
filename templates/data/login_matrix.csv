@@ -1,0 +1,5 @@
+username,password,expected_status,case_id
+admin,admin123,200,admin_ok
+admin,,400,empty_password
+admin,wrong,401,wrong_password
+,admin123,400,empty_username

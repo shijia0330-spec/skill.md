@@ -1,0 +1,30 @@
+---
+description: "UI测试元素定位策略 - L1/L2/L3 优先级"
+globs: ["**/*.md", "**/*.py"]
+alwaysApply: false
+---
+
+# UI 元素定位策略（L1/L2/L3）
+
+## 定位层级
+
+### L1 - 语义定位（优先使用）
+- `get_by_test_id()` - data-testid 属性，最稳定
+- `get_by_label()` - label 关联的表单元素
+- `get_by_placeholder()` - placeholder 文本
+- `get_by_role()` - ARIA 角色（button、link、textbox 等）+ name
+- `get_by_text()` - 可见文本内容
+
+### L2 - CSS/XPath 定位（备选）
+- `locator("css=...")` - CSS 选择器
+- `locator("xpath=...")` - XPath 表达式
+
+### L3 - 坐标定位（最后手段）
+- `locator()` 配合复杂选择器
+- 仅在 L1/L2 都无法定位时使用
+
+## 使用原则
+
+1. 优先使用 L1，页面结构变了只要 label 没变就还能跑
+2. 禁止无评审将全部用例建在 L3 上
+3. 与执行/下 pytest 脚本命名、TC-UI-xxx 约定一致

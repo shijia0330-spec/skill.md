@@ -1,0 +1,38 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# 生成的脚本（用户运行后会产生；手工打 zip 分发时也请勿打包整个 output/）
+output/
+# 本地试跑 Appium 等请勿命名 ubr_* / 勿提交真机 udid（已在 output/ 内则已被忽略）
+*.spec.md.bak
+
+# 环境配置（用户自己创建）
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# 测试
+.pytest_cache/
+.heal_cache/
+.hypothesis/
+.benchmarks/
+.deepeval/
+allure-results/
+jmeter.log
+output/.last_run_message.txt
+output/.last_generate_ok

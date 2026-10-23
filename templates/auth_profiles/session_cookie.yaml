@@ -1,0 +1,12 @@
+# Session/Cookie 鉴权（表单登录 + Cookie）
+type: bearer_login
+login_path: /api/auth/login
+username_field: username
+password_field: password
+username_env: TEST_USERNAME
+password_env: TEST_PASSWORD
+token_json_paths:
+  - access_token
+  - token
+notes: |
+  适用于 REST 登录；UI 登录态见 seckill_web.yaml

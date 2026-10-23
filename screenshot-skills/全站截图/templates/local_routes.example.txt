@@ -1,0 +1,17 @@
+# 本地 HTML 文件列表示例
+# 每行一个文件名（不含路径），脚本自动在 --local-dir 目录下查找
+# 忽略空行和 # 注释
+
+# 核心页面
+index.html
+login.html
+dashboard.html
+
+# 业务页面
+users.html
+projects.html
+tasks.html
+
+# 弹窗测试页（用于验证按钮截图）
+form-dialog.html
+detail-drawer.html

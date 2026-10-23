@@ -1,0 +1,32 @@
+{
+  "platform": "zentao",
+  "severity_map": {
+    "Critical": 1,
+    "High": 2,
+    "Medium": 3,
+    "Low": 4,
+    "default": 3
+  },
+  "priority_map": {
+    "P0": 1,
+    "P1": 2,
+    "P2": 3,
+    "P3": 4,
+    "default": 3
+  },
+  "type_map": {
+    "功能": "codeerror",
+    "界面": "designdefect",
+    "性能": "performance",
+    "安全": "security",
+    "兼容": "compat",
+    "数据": "codeerror",
+    "环境": "others"
+  },
+  "defaults": {
+    "type": "codeerror",
+    "opened_build": "",
+    "assigned_to": "",
+    "module": 0
+  }
+}

@@ -1,0 +1,7 @@
+# OAuth2 Client Credentials / 静态 Bearer
+type: static_bearer
+token_env: PERF_ACCESS_TOKEN
+header_name: Authorization
+header_prefix: "Bearer "
+notes: |
+  export PERF_ACCESS_TOKEN=your_token_here

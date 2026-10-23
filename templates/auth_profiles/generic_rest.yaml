@@ -1,0 +1,24 @@
+# 通用 REST 鉴权 profile（OpenAPI 导入与 spec 共用）
+# 用法:
+#   python codegen/openapi_to_cases.py -i openapi.json --auth-profile templates/auth_profiles/generic_rest.yaml
+#   ./generate.sh --import-openapi openapi.json --auth-profile templates/auth_profiles/generic_rest.yaml
+
+type: bearer_login
+login_path: /api/auth/login
+username_field: username
+password_field: password
+username_env: TEST_USERNAME
+password_env: TEST_PASSWORD
+
+token_json_paths:
+  - access_token
+  - token
+  - data.access_token
+  - data.token
+
+notes: |
+  秒杀财务系统示例：
+  export TEST_BASE_URL=http://your-server:5001
+  export TEST_USERNAME=admin
+  export TEST_PASSWORD=admin123
+  curl -X POST "$TEST_BASE_URL/api/test/init" -H "Content-Type: application/json" -d '{}'

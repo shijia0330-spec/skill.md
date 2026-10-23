@@ -1,0 +1,26 @@
+---
+description: 专业版测试技能编排 — 独立技能包，仅供 AI 编辑器遵循本目录内 Markdown 规范
+alwaysApply: true
+---
+
+# 专业版测试 Skills（独立使用）
+
+本工作区根目录即技能包（`api-skills`、`UI-skills`、`mobile-skills`、`testcase-skills`、`bug-reporter`、`progress-reporter`、`intent-router` 等）。**独立运行**，不依赖外部引擎；执行测试时用终端运行用户项目里的 `pytest` / `curl` / Playwright / Appium，或由用户指定命令。
+
+## 接到任务时
+
+1. 用 **`@`** 引用具体技能文件（例：`@api-skills/索引.md`、`@intent-router/SKILL.md`），不要凭记忆编造路径。
+2. **API**：按 `api-skills/索引.md` 流水线 — 分析（00–03）→ 规划 → 执行（01–04）→ 需要时再对照自我修复 / bug-reporter。
+3. **UI / E2E（浏览器）**：仅 **pytest-playwright（Python）**；定位 **L1→L2→L3**，以 `UI-skills/索引.md` 为准；禁止 MidScene / `.spec.ts` 作为主交付。
+4. **移动端 App**：默认 **Appium 2 + Python + pytest**；先 `mobile-skills/规划` 再 `mobile-skills/执行`；脚本失败排障用 `mobile-skills/自我修复`。不要与浏览器 Playwright 的前提混用。
+5. **用例设计**：`testcase-skills/规划` → `testcase-skills/分析` → `testcase-skills/生成`；评审用 `testcase-skills/评审`。
+6. **意图不明**：先看 `intent-router/mapping.yaml` 再选模块。
+
+## 产出约定
+
+- 生成的脚本落在**用户指定业务仓库**（如被测系统目录），不要假设存在 `app/skills/engine.py`。
+- 报告字段对齐各模块「执行与报告约定」Markdown。
+
+## 声明式生成（可选，非 LLM）
+
+本包自带 **`codegen/run_spec.py`**：读带 YAML Frontmatter 的 `.md`（`kind: api_pytest` / `ui_pytest_playwright` / `appium_pytest` / `data_factory` / `perf_test` / `visual_regression`）→ 输出可运行脚本。示例见 **`codegen/examples/`** 与 **`templates/`**。配合 AI 编辑器：先编辑 spec，终端执行 `./generate.sh`，再按 kind 运行 `pytest` 等。

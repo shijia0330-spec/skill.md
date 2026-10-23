@@ -1,0 +1,28 @@
+# 秒杀财务 Web 路由列表示例（与实际前端路由配置保持一致）
+# 注意：新建/编辑多为列表页弹窗，无独立 /create 路由；需弹窗时用 --capture-dialogs
+/
+/login
+/products
+/promotions
+/promotions/config
+/orders
+/purchase
+/sales
+/stock
+/finance
+/purchase/receives
+/purchase/stock-ins
+/purchase/suppliers
+/sales/deliveries
+/sales/stock-outs
+/sales/customers
+/stock/transactions
+/stock/adjust
+/finance/profit
+/finance/balance
+/reports
+/member
+/member/points
+/member/signin
+/member/products
+/member/admin

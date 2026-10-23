@@ -1,0 +1,30 @@
+# 路由列表示例
+# 每行一个 path，忽略空行和 # 注释
+# 适用于 SPA 前端路由（React Router / Vue Router）
+
+# 核心页面
+/
+/login
+/dashboard
+
+# 业务模块
+/users
+/users/list
+/users/detail
+/projects
+/projects/list
+/projects/detail
+
+# 数据管理
+/data
+/data/import
+/data/export
+/reports
+/reports/daily
+/reports/monthly
+
+# 系统设置
+/settings
+/settings/general
+/settings/permissions
+/logs

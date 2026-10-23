@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{REPORT_TITLE}}</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #f59e0b;
+      --border: #e8eaed;
+      --pass: #059669;
+      --warn: #d97706;
+      --fail: #dc2626;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 32px 20px;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    h1 {
+      font-size: 1.6rem;
+      color: var(--text);
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .meta { font-size: 0.88rem; color: var(--muted); margin-bottom: 8px; }
+    h2 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin: 24px 0 12px;
+    }
+    h2:first-child { margin-top: 0; }
+    p { margin-bottom: 10px; color: var(--text); }
+    ul, ol { margin: 0 0 12px 20px; }
+    li { margin-bottom: 6px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 12px 0;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    th { background: #fff7ed; color: var(--accent); font-weight: 600; }
+    .ok { color: var(--pass); font-weight: 600; }
+    .warn { color: var(--warn); font-weight: 600; }
+    .bad { color: var(--fail); font-weight: 600; }
+    .shot {
+      margin: 16px 0;
+      padding: 14px;
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .shot img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+    }
+    .shot figcaption {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .placeholder {
+      padding: 40px;
+      text-align: center;
+      color: var(--muted);
+      background: #f9fafb;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #fff7ed;
+      color: var(--accent);
+      border: 1px solid rgba(245,158,11,.3);
+      margin-bottom: 12px;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding: 16px 0 8px;
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .card { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <span class="tag">性能测试分析报告</span>
+      <h1>{{REPORT_TITLE}}</h1>
+      <p class="meta">{{META_LINE}}</p>
+    </div>
+
+    <div class="card" id="section-overview">
+      <h2>一、测试概述</h2>
+      {{SECTION_OVERVIEW}}
+    </div>
+
+    <div class="card" id="section-metrics">
+      <h2>二、核心指标</h2>
+      {{SECTION_METRICS}}
+    </div>
+
+    <div class="card" id="section-screenshots">
+      <h2>三、截图与说明</h2>
+      {{SECTION_SCREENSHOTS}}
+    </div>
+
+    <div class="card" id="section-bottleneck">
+      <h2>四、瓶颈分析</h2>
+      {{SECTION_BOTTLENECK}}
+    </div>
+
+    <div class="card" id="section-suggestions">
+      <h2>五、优化建议</h2>
+      {{SECTION_SUGGESTIONS}}
+    </div>
+
+    <div class="card" id="section-summary">
+      <h2>六、总结与后续</h2>
+      {{SECTION_SUMMARY}}
+    </div>
+
+    <footer>由 load-testing/报告 Skill 生成 · skills V3.0</footer>
+  </div>
+</body>
+</html>

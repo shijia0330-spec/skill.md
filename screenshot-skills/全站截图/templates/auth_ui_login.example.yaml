@@ -1,0 +1,20 @@
+# 登录配置模板
+# 用于 crawl_and_capture.py --auth-profile
+
+# 登录页面路径
+login_path: /login
+
+# 表单字段名（label 或 placeholder）
+username_field: username
+password_field: password
+
+# 登录凭据（优先使用环境变量）
+# username: admin
+# password: "123456"
+
+# 登录态 JSON 路径（复用登录态时设置）
+# storage_state: output/.auth/login_state.json
+
+# 环境变量映射
+# username_env: TEST_USERNAME
+# password_env: TEST_PASSWORD

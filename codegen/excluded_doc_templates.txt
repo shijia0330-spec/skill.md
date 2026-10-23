@@ -1,0 +1,6 @@
+# templates/ 下不参与 generate.sh / codegen 自测的 Markdown（用例/需求文档，无 YAML frontmatter）
+需求文档.md
+测试用例-需求文档.md
+testcase_generation.md
+testcase_template.md
+testcase_from_bug.md

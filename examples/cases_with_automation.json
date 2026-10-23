@@ -1,0 +1,52 @@
+{
+  "base_url": "http://your-server:5000",
+  "auth": {
+    "type": "bearer_login",
+    "login_path": "/api/auth/login",
+    "username_field": "username",
+    "password_field": "password",
+    "username_env": "TEST_USERNAME",
+    "password_env": "TEST_PASSWORD"
+  },
+  "cases": [
+    {
+      "name": "采购订单列表（管理员）",
+      "description": "对应 app.api_get_purchase_orders，需管理员 Token。",
+      "priority": "high",
+      "case_type": "smoke_sanity",
+      "tags": ["purchase", "orders"],
+      "automation": {
+        "id": "TC-PUR-001",
+        "method": "GET",
+        "path": "/api/purchase/orders",
+        "expect_status": 200
+      }
+    },
+    {
+      "name": "采购入库单列表（管理员）",
+      "description": "对应 app.api_get_stock_ins。",
+      "priority": "high",
+      "case_type": "smoke_sanity",
+      "tags": ["purchase", "stock-in"],
+      "automation": {
+        "id": "TC-PUR-002",
+        "method": "GET",
+        "path": "/api/purchase/stock-ins",
+        "expect_status": 200
+      }
+    },
+    {
+      "name": "供应商列表（管理员）",
+      "description": "采购前置主数据，同为管理员接口。",
+      "priority": "medium",
+      "case_type": "functional",
+      "tags": ["purchase", "supplier"],
+      "automation": {
+        "id": "TC-PUR-003",
+        "method": "GET",
+        "path": "/api/suppliers",
+        "expect_status": 200
+      }
+    }
+  ]
+}

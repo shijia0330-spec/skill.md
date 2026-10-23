@@ -1,0 +1,6 @@
+# 登录配置示例（以某管理台系统为例）
+login_path: /login
+username_field: 用户名
+password_field: 密码
+username_env: TEST_USERNAME
+password_env: TEST_PASSWORD

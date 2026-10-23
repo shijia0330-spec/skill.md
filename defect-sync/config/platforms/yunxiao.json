@@ -1,0 +1,23 @@
+{
+  "platform": "yunxiao",
+  "severity_map": {
+    "Critical": "BLOCKER",
+    "High": "MAJOR",
+    "Medium": "NORMAL",
+    "Low": "TRIVIAL",
+    "default": "NORMAL"
+  },
+  "priority_map": {
+    "P0": "URGENT",
+    "P1": "HIGH",
+    "P2": "MEDIUM",
+    "P3": "LOW",
+    "default": "MEDIUM"
+  },
+  "defaults": {
+    "workitem_type": "Bug",
+    "assigned_to": ""
+  },
+  "create_path": "/organization/{org_id}/projects/{project_id}/workitems",
+  "note": "create_path 可按贵司云效 API 版本覆盖；org_id/project_id 走环境变量"
+}
